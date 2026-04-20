@@ -9,7 +9,9 @@ export function initServices() {
 
     let isOpen = false;
 
-    trigger.addEventListener('click', () => {
+    const isTriggerHidden = () => trigger && window.getComputedStyle(trigger).display === 'none';
+
+    const toggle = () => {
       if (!isOpen) {
         gsap.to(panel, {
           height: 'auto',
@@ -19,7 +21,7 @@ export function initServices() {
           onStart: () => { panel.style.overflow = 'hidden'; }
         });
         isOpen = true;
-        trigger.setAttribute('aria-expanded', 'true');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
         row.classList.add('is-open');
       } else {
         gsap.to(panel, {
@@ -29,8 +31,17 @@ export function initServices() {
           ease: 'power4.inOut'
         });
         isOpen = false;
-        trigger.setAttribute('aria-expanded', 'false');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
         row.classList.remove('is-open');
+      }
+    };
+
+    if (trigger) {
+      trigger.addEventListener('click', toggle);
+    }
+    row.addEventListener('click', e => {
+      if (isTriggerHidden() && !e.target.closest('.service-panel')) {
+        toggle();
       }
     });
   });

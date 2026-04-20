@@ -1509,13 +1509,21 @@ html { scroll-padding-top: var(--nav-h); }
 
   /* Hero */
   .hero-showreel { display: none; }
-  .hero-tagline  { font-size: 0.65rem; }
+  .hero-tagline  { font-size: 0.65rem; bottom: 0.75rem; }
+  /* Extra bottom padding so tagline doesn't sit under the headline */
+  .hero { padding-bottom: clamp(3rem, 7vw, 5rem); }
 
   /* Services */
   .services > .section-label { left: 0; position: static; margin-bottom: 1rem; }
   .service-panel-inner { grid-template-columns: 1fr; }
   .service-panel-inner img { width: 100%; height: 180px; }
-  .service-trigger { padding: 0.6em 0.5em; min-height: 44px; display: flex; align-items: center; }
+  /* Hide trigger text — whole row is tappable on mobile */
+  .service-trigger { display: none; }
+  /* Prevent row content from wrapping and ensure clean layout */
+  .service-row-inner { flex-wrap: nowrap; overflow: hidden; }
+  /* Tap affordance: subtle cursor / active state on the row */
+  .service-row--clickable { cursor: pointer; }
+  .service-row--clickable:active .service-word { opacity: 0.7; }
 
   /* About gallery: single column on phones */
   .about-gallery { grid-template-columns: 1fr; }
@@ -1539,4 +1547,22 @@ html { scroll-padding-top: var(--nav-h); }
 @media (max-width: 440px) {
   .nav-logo-svg  { width: 92px; }
   .nav-logo-pill { padding: 0 0.9rem; }
+}
+
+/* ── iPhone safe area (Dynamic Island, home indicator) ──── */
+@media (max-width: 640px) {
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .footer {
+      padding-bottom: calc(clamp(1.5rem, 3vw, 2.5rem) + env(safe-area-inset-bottom));
+    }
+    .hero-tagline {
+      bottom: max(0.75rem, env(safe-area-inset-bottom));
+    }
+    .nav {
+      top: max(12px, env(safe-area-inset-top));
+    }
+    .cart-drawer {
+      top: calc(74px + env(safe-area-inset-top));
+    }
+  }
 }
