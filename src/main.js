@@ -7,6 +7,7 @@ import { initAbout }      from './components/about.js';
 import { initCollection } from './components/collection.js';
 import { initFooter }     from './components/footer.js';
 import { initBasket }     from './components/basket.js';
+import { initInlineFlicker } from './components/inline-flicker.js';
 
 // Always start at top on load/reload
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initNav();
   initBasket();
+  initInlineFlicker();
   initServices();
   initAbout();
   initCollection();
