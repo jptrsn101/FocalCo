@@ -1,8 +1,16 @@
+function applyRandomIndent(lines, maxVw = 10) {
+  lines.forEach(el => {
+    const vw = (Math.random() * maxVw).toFixed(2);
+    el.style.paddingLeft = `${vw}vw`;
+  });
+}
+
 export function initCollection() {
   if (!document.querySelector('.collection')) return;
 
   // ── Title lines clip-mask reveal ───────────────────────────
   const titleLines = document.querySelectorAll('.coll-title-line');
+  applyRandomIndent(titleLines);
   gsap.set(titleLines, { y: '105%', force3D: true });
   gsap.to(titleLines, {
     y: '0%',
@@ -88,6 +96,7 @@ export function initCollection() {
 
   // ── Editorial break ─────────────────────────────────────────
   const breakTextLines = document.querySelectorAll('.break-line--left, .break-line--right');
+  applyRandomIndent(breakTextLines);
   gsap.set(breakTextLines, { y: '105%', force3D: true });
   gsap.to(breakTextLines, {
     y: '0%',

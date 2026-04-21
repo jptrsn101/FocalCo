@@ -2,6 +2,9 @@ export function initHero() {
   const lines = document.querySelectorAll('.hero-line');
 
   lines.forEach(line => {
+    if (!line.classList.contains('hero-line--inline')) {
+      line.style.paddingLeft = `${(Math.random() * 10).toFixed(2)}vw`;
+    }
     const clip = document.createElement('div');
     clip.style.cssText = 'overflow:hidden; padding-bottom:0.18em; margin-bottom:-0.18em; padding-top:0.45em; margin-top:-0.45em;';
     line.parentNode.insertBefore(clip, line);
