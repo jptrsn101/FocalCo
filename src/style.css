@@ -10,6 +10,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'PP Fragment Glare';
+  src: url('/BrandAssets/SVG/PPFragment-GlareRegular.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ---- TOKENS ---- */
 :root {
   --color-dark:          #1a1b0f;
@@ -870,6 +878,10 @@ ul { list-style: none; }
   margin-top: -0.35em;
   padding-bottom: 0.1em;
   margin-bottom: -0.1em;
+  padding-left: 0.08em;
+  margin-left: -0.08em;
+  padding-right: 0.08em;
+  margin-right: -0.08em;
 }
 
 .about-quote .quote-word-inner {
