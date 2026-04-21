@@ -9,7 +9,7 @@ export function initCollection() {
   if (!document.querySelector('.collection')) return;
 
   // ── Title lines clip-mask reveal ───────────────────────────
-  const titleLines = document.querySelectorAll('.coll-title-line');
+  const titleLines = document.querySelectorAll('.collection-title .break-line--left, .collection-title .break-line--right');
   applyRandomIndent(titleLines);
   gsap.set(titleLines, { y: '105%', force3D: true });
   gsap.to(titleLines, {
@@ -24,6 +24,19 @@ export function initCollection() {
       once: true
     }
   });
+
+  const titleInline = document.querySelector('.collection-title .break-line--inline');
+  if (titleInline) {
+    gsap.set(titleInline, { opacity: 0, scale: 0.92, force3D: true });
+    gsap.to(titleInline, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.9,
+      ease: 'power4.out',
+      force3D: true,
+      scrollTrigger: { trigger: '.collection-header', start: 'top 78%', once: true }
+    });
+  }
 
   gsap.set('.collection-intro', { opacity: 0, y: 18 });
   gsap.to('.collection-intro', {
