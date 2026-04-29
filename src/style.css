@@ -21,7 +21,7 @@
 /* ---- TOKENS ---- */
 :root {
   --color-dark:          #1a1b0f;
-  --color-cream:         #f0ece3;
+  --color-cream:         #f5f5f2;
   --color-yellow:        #f4ec5f;
   --color-yellow-muted:  #b4af4c;
   --color-grey:          #c7c7c7;
@@ -30,7 +30,7 @@
 
   /* Theme-aware tokens — light mode defaults */
   --accent:          #f4ec5f;
-  --bg:              #f0ece3;
+  --bg:              #f5f5f2;
   --fg:              #1a1b0f;
   --fg-68:           rgba(26,27,15,0.68);
   --fg-65:           rgba(26,27,15,0.65);
@@ -872,8 +872,25 @@ ul { list-style: none; }
 .about {
   background: var(--bg);
   padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 2rem);
+  position: relative;
+  overflow: hidden;
   transition: background-color 0.4s var(--ease-out);
 }
+
+.about-deco-mark {
+  position: absolute;
+  left: -35%;
+  bottom: -15%;
+  width: clamp(600px, 80vw, 1400px);
+  fill: var(--color-purple);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  transform: rotate(180deg);
+}
+
+.about-quote-wrap,
+.about-gallery { position: relative; z-index: 1; }
 
 .about-quote-wrap {
   max-width: 960px;
@@ -950,6 +967,8 @@ ul { list-style: none; }
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 3px;
+  outline: 1.5px solid var(--color-yellow);
+  outline-offset: -1.5px;
   transition: transform 0.5s var(--ease-out);
 }
 
@@ -964,8 +983,15 @@ ul { list-style: none; }
   background: var(--bg);
   padding: 0 0 clamp(4rem, 8vw, 8rem);
   overflow-x: clip;
+  overflow-y: clip;
+  position: relative;
   transition: background-color 0.4s var(--ease-out);
 }
+
+.collection-header,
+.collection-break,
+.product-entry,
+.collection-footer { position: relative; z-index: 1; }
 
 /* Header */
 .collection-header {
@@ -1087,8 +1113,9 @@ ul { list-style: none; }
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg-55);
-  border: 1px solid var(--border-type);
+  color: #f0ece3;
+  background: var(--color-blue);
+  border: 1px solid transparent;
   padding: 0.25em 0.75em;
   border-radius: 100px;
 }
@@ -1185,6 +1212,9 @@ ul { list-style: none; }
   padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 3vw, 2rem);
   border-top: 1px solid var(--border);
 }
+
+.collection-break .kw,
+[data-theme="dark"] .collection-break .kw { color: var(--color-blue); }
 
 .break-line {
   font-family: var(--font-display);
@@ -1640,7 +1670,7 @@ html { scroll-padding-top: var(--nav-h); }
   position: relative;
   z-index: 2;
   padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 3rem);
-  color: #f0ece3;
+  color: #f5f5f2;
   will-change: transform, opacity;
   max-width: 640px;
 }
@@ -1658,9 +1688,9 @@ html { scroll-padding-top: var(--nav-h); }
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 10vw, 9rem);
   letter-spacing: -0.03em;
-  line-height: 0.88;
+  line-height: 0.92;
   text-transform: uppercase;
-  color: #f0ece3;
+  color: #f5f5f2;
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -1724,7 +1754,7 @@ html { scroll-padding-top: var(--nav-h); }
 
 .pdp-name {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 11vw, 10rem);
+  font-size: clamp(2.8rem, 7.5vw, 7rem);
   letter-spacing: -0.03em;
   line-height: 0.88;
   text-transform: uppercase;
@@ -1742,8 +1772,9 @@ html { scroll-padding-top: var(--nav-h); }
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg-55);
-  border: 1px solid var(--border-type);
+  color: #f0ece3;
+  background: var(--color-blue);
+  border: 1px solid transparent;
   padding: 0.25em 0.75em;
   border-radius: 100px;
 }
@@ -1771,8 +1802,9 @@ html { scroll-padding-top: var(--nav-h); }
 .pdp-hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
   will-change: transform;
 }
 
@@ -1896,58 +1928,46 @@ html { scroll-padding-top: var(--nav-h); }
   max-width: 36ch;
 }
 
-/* Packaging section — StackedTubes cinematic closer */
+/* Packaging section — silent side-by-side collage */
 .pdp-packaging {
   background: var(--color-dark);
-  color: var(--color-cream);
 }
 
-.pdp-packaging-header {
-  padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem) clamp(2.5rem, 5vw, 4.5rem);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 3rem;
-  border-bottom: 1px solid rgba(240,236,227,0.1);
+.pdp-packaging-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 90svh;
 }
 
-.pdp-pack-label-wrap {
+.pdp-collage-img-wrap {
   overflow: hidden;
-  padding-bottom: 0.08em;
-}
-
-.pdp-pack-label {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 9vw, 8rem);
-  letter-spacing: -0.03em;
-  line-height: 0.88;
-  text-transform: uppercase;
-  color: var(--color-cream);
-}
-
-.pdp-pack-sub {
-  font-family: var(--font-body);
-  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
-  line-height: 1.7;
-  color: rgba(240,236,227,0.6);
-  max-width: 32ch;
-  padding-bottom: 0.25rem;
-}
-
-.pdp-packaging-img-wrap {
   position: relative;
-  height: 85svh;
-  overflow: hidden;
 }
 
-.pdp-packaging-img {
-  position: absolute;
-  inset: 0;
+.pdp-collage-img-wrap + .pdp-collage-img-wrap {
+  border-left: 1px solid rgba(240,236,227,0.08);
+}
+
+.pdp-collage-img {
   width: 100%;
-  height: 120%;
+  height: 115%;
   object-fit: cover;
   object-position: center;
+  display: block;
   will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .pdp-packaging-collage {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .pdp-collage-img-wrap { height: 60svh; }
+  .pdp-collage-img-wrap + .pdp-collage-img-wrap {
+    border-left: none;
+    border-top: 1px solid rgba(240,236,227,0.08);
+  }
+  .pdp-collage-img { height: 100%; }
 }
 
 /* Product detail page — view details link in collection */
@@ -1958,14 +1978,13 @@ html { scroll-padding-top: var(--nav-h); }
   font-family: var(--font-body);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
-  color: var(--fg-55);
-  border-bottom: 1px solid var(--border-type);
+  color: var(--color-blue);
+  border-bottom: 1px solid var(--color-blue);
   padding-bottom: 0.1em;
-  transition: color 0.25s, border-color 0.25s, gap 0.3s var(--ease-out);
+  transition: color 0.25s, border-color 0.25s, gap 0.3s var(--ease-out), opacity 0.2s;
 }
 .product-view-link:hover {
-  color: var(--fg);
-  border-color: currentColor;
+  opacity: 0.75;
   gap: 0.6em;
 }
 

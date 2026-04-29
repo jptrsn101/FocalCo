@@ -121,22 +121,21 @@ export function initProductDetail() {
     scrollTrigger: { trigger: '.pdp-packaging-header', start: 'top 76%', once: true }
   });
 
-  // Packaging image parallax (moves upward as you scroll down)
-  const packImg = document.querySelector('.pdp-packaging-img');
-  if (packImg) {
-    gsap.fromTo(packImg,
-      { yPercent: -10 },
+  // Packaging collage — parallax on each image
+  document.querySelectorAll('.pdp-collage-img').forEach((img) => {
+    gsap.fromTo(img,
+      { yPercent: -8 },
       {
-        yPercent: 0,
+        yPercent: 8,
         ease: 'none',
         force3D: true,
         scrollTrigger: {
-          trigger: '.pdp-packaging-img-wrap',
+          trigger: img.closest('.pdp-collage-img-wrap'),
           start: 'top bottom',
           end: 'bottom top',
           scrub: 1.5
         }
       }
     );
-  }
+  });
 }
