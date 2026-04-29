@@ -8,6 +8,7 @@ import { initCollection } from './components/collection.js';
 import { initFooter }     from './components/footer.js';
 import { initBasket }     from './components/basket.js';
 import { initInlineFlicker } from './components/inline-flicker.js';
+import { initTubes }      from './components/tubes.js';
 
 // Always start at top on load/reload
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initServices();
   initAbout();
   initCollection();
+  initTubes();
   initFooter();
 
   // Loader runs first; hero animates in when loader exits

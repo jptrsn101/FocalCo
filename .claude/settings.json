@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx serve *)",
+      "Bash(lsof -ti:*)",
+      "Bash(lsof -i :*)",
+      "Bash(curl -s http://localhost:*)",
+      "Bash(wc -l *)"
+    ]
+  }
+}

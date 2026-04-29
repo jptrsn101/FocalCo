@@ -52,4 +52,55 @@ export function initAbout() {
       once: true
     }
   });
+
+  // ── Editorial spread clip reveals ─────────────────────────
+  document.querySelectorAll('.editorial-img-wrap').forEach((wrap, i) => {
+    const inner = wrap.querySelector('.editorial-img-inner');
+    const img   = wrap.querySelector('.editorial-img');
+
+    if (inner) {
+      gsap.set(inner, { clipPath: 'inset(100% 0% 0% 0%)' });
+      gsap.to(inner, {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        duration: 1.2,
+        ease: 'power4.out',
+        force3D: true,
+        scrollTrigger: {
+          trigger: wrap,
+          start: 'top 82%',
+          once: true
+        },
+        delay: i * 0.15
+      });
+    }
+
+    if (img) {
+      gsap.set(img, { scale: 1.08, force3D: true });
+      gsap.to(img, {
+        scale: 1,
+        duration: 1.5,
+        ease: 'power4.out',
+        force3D: true,
+        scrollTrigger: {
+          trigger: wrap,
+          start: 'top 82%',
+          once: true
+        },
+        delay: i * 0.15
+      });
+
+      // Parallax while scrolling past
+      gsap.to(img, {
+        yPercent: -10,
+        ease: 'none',
+        force3D: true,
+        scrollTrigger: {
+          trigger: wrap,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5
+        }
+      });
+    }
+  });
 }
