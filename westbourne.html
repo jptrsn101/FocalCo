@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>The Westbourne — Focal&amp;Co.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/style.css">
   <script>(function(){var t=localStorage.getItem('focal-theme');if(t==='dark')document.documentElement.dataset.theme='dark';})()</script>
 </head>
@@ -85,80 +82,50 @@
   <!-- MAIN -->
   <main>
 
-    <!-- HERO -->
-    <section class="pdp-hero">
-      <div class="pdp-hero-left">
-        <a href="index.html#shop" class="pdp-back-link">← The Collection</a>
-        <span class="pdp-label">Sun Frame — (02)</span>
-        <div class="pdp-name-wrap">
-          <h1 class="pdp-name">The<br>Westbourne</h1>
-        </div>
-        <div class="pdp-hero-meta">
-          <span class="pdp-type">Sun Frame</span>
-          <span class="pdp-price-hero">£345</span>
-        </div>
-      </div>
-      <div class="pdp-hero-right">
-        <div class="pdp-hero-img-wrap">
-          <img
-            src="BrandAssets/Products/37e46b394a990aceaf37cd0a8d90b92f39e54488.jpg"
-            alt="The Westbourne — deep navy acetate sun frame"
-            class="pdp-hero-img"
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- DETAILS -->
-    <section class="pdp-details">
-      <div class="pdp-desc-wrap">
-        <p class="pdp-section-label">About this frame</p>
-        <p class="pdp-desc">Deep navy acetate with CR-39 gradient lenses. Oversized without being absurd. The kind of frame people ask about. Handcrafted from premium bio-acetate and finished with adjustable nose pads for a fit that holds all day — whether you're on the coast or in a meeting.</p>
-      </div>
-      <div class="pdp-purchase-wrap">
-        <div class="pdp-purchase">
-          <span class="product-price">£345</span>
-          <button class="product-cta" data-product="The Westbourne" data-price="345">Add to cart <span>→</span></button>
-        </div>
-        <ul class="pdp-specs">
-          <li><span class="pdp-spec-key">Frame width</span><span>148mm</span></li>
-          <li><span class="pdp-spec-key">Lens height</span><span>52mm</span></li>
-          <li><span class="pdp-spec-key">Lenses</span><span>CR-39 gradient</span></li>
-          <li><span class="pdp-spec-key">Material</span><span>Bio-acetate</span></li>
-          <li><span class="pdp-spec-key">Fitting</span><span>Free, in-store</span></li>
-          <li><span class="pdp-spec-key">Origin</span><span>Handmade in Italy</span></li>
-          <li><span class="pdp-spec-key">Adjustments</span><span>Free, forever</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- MOCKUP — glasses with their individual tube case -->
-    <section class="pdp-mockup">
-      <div class="pdp-mockup-img-wrap">
+    <!-- FULL-SCALE PRODUCT SHOT -->
+    <section class="pdp-visual">
+      <div class="pdp-visual-inner">
         <img
-          src="Imagery/WestbourneMockup.jpg"
-          alt="The Westbourne in its case"
-          class="pdp-mockup-img"
+          src="ProductShots/TheWestbourne.jpg"
+          alt="The Westbourne — deep navy acetate sun frame"
+          class="pdp-visual-img"
         >
       </div>
-      <div class="pdp-mockup-text">
-        <p class="pdp-section-label">How it arrives</p>
-        <div class="pdp-mockup-headline-wrap" style="overflow:hidden;padding-bottom:0.08em;">
-          <h2 class="pdp-mockup-headline">Packaged<br>properly.</h2>
+    </section>
+
+    <!-- PRODUCT INFO -->
+    <section class="pdp-info">
+      <a href="index.html#shop" class="pdp-back-link">← The Collection</a>
+      <div class="pdp-info-grid">
+        <div class="pdp-info-left">
+          <span class="pdp-label">Sun Frame — (02)</span>
+          <h1 class="pdp-name">The<br>Westbourne</h1>
+          <p class="pdp-desc">Deep navy bio-acetate with a subtle tint. An oversized silhouette with enough character to ask about itself — and enough restraint to go with everything.</p>
+        </div>
+        <div class="pdp-info-right">
+          <div class="pdp-info-meta">
+            <span class="pdp-type">Sun Frame</span>
+            <span class="pdp-price-hero">£345</span>
+          </div>
+          <div class="pdp-purchase">
+            <button class="product-cta" data-product="The Westbourne" data-price="345">Add to cart <span>→</span></button>
+          </div>
+          <ul class="pdp-specs">
+            <li><span class="pdp-spec-key">Frame width</span><span>148mm</span></li>
+            <li><span class="pdp-spec-key">Lens height</span><span>52mm</span></li>
+            <li><span class="pdp-spec-key">Lenses</span><span>CR-39 gradient</span></li>
+            <li><span class="pdp-spec-key">Material</span><span>Bio-acetate</span></li>
+            <li><span class="pdp-spec-key">Fitting</span><span>Free, in-store</span></li>
+            <li><span class="pdp-spec-key">Origin</span><span>Handmade in Italy</span></li>
+            <li><span class="pdp-spec-key">Adjustments</span><span>Free, forever</span></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- PACKAGING — cinematic StackedTubes closer -->
-    <section class="pdp-packaging">
-      <div class="pdp-packaging-collage">
-        <div class="pdp-collage-img-wrap">
-          <img src="Imagery/WestbourneMockup.jpg" alt="" class="pdp-collage-img">
-        </div>
-        <div class="pdp-collage-img-wrap">
-          <img src="Imagery/StackedTubesMockup.jpg" alt="" class="pdp-collage-img">
-        </div>
-      </div>
+    <!-- FULL-WIDTH PACKAGING IMAGE -->
+    <section class="pdp-packaging-full">
+      <img src="Imagery/WestbourneMockup.jpg" alt="The Westbourne packaging" class="pdp-packaging-img">
     </section>
 
   </main>
